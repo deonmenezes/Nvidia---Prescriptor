@@ -173,13 +173,10 @@ export default async function DashboardPage() {
                   <Link
                     key={p.id}
                     href={`/patients/${p.id}`}
-                    className="flex items-center gap-3.5 px-5 py-3.5 transition-colors group"
+                    className="flex items-center gap-3.5 px-5 py-3.5 transition-colors group hover:bg-slate-50"
                     style={{
                       borderBottom: i < (recentPatients?.length ?? 0) - 1 ? '1px solid #f8f9fb' : 'none',
-                      background: 'transparent',
                     }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.background = '#fafbfc')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.background = 'transparent')}
                   >
                     <div
                       className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white text-[11px] font-bold"

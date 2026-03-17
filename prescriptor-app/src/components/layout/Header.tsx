@@ -23,7 +23,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
       setDoctor(data)
     }
     load()
-  }, [supabase])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <header
