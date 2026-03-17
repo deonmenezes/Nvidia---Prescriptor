@@ -9,7 +9,7 @@ interface Patient { id: string; full_name: string; phone: string }
 interface Props { patients: Patient[]; defaultPatientId?: string }
 
 export default function NewAppointmentModal({ patients, defaultPatientId }: Props) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(!!defaultPatientId)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({

@@ -127,7 +127,7 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
                 <Bell size={16} className="text-amber-500" />
                 <h3 className="font-semibold text-slate-900">Reminders</h3>
               </div>
-              <Link href={`/reminders/new?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Add</Link>
+              <Link href={`/reminders?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Add</Link>
             </div>
             <div className="divide-y divide-slate-50">
               {(!reminders || reminders.length === 0) && (
@@ -179,7 +179,7 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
                 <FileText size={16} className="text-blue-500" />
                 <h3 className="font-semibold text-slate-900">Reports</h3>
               </div>
-              <Link href={`/reports/new?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Upload</Link>
+              <Link href={`/reports?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Upload</Link>
             </div>
             <div className="divide-y divide-slate-50">
               {(!reports || reports.length === 0) && (
@@ -206,7 +206,7 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
                 <Pill size={16} className="text-purple-500" />
                 <h3 className="font-semibold text-slate-900">Appointments</h3>
               </div>
-              <Link href={`/appointments/new?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Schedule</Link>
+              <Link href={`/appointments?patient=${patient.id}`} className="text-xs font-medium px-2.5 py-1 rounded-lg text-teal-700 bg-teal-50 hover:bg-teal-100">+ Schedule</Link>
             </div>
             <div className="divide-y divide-slate-50">
               {(!appointments || appointments.length === 0) && (

@@ -6,7 +6,12 @@ import { FileText, Upload } from 'lucide-react'
 import Link from 'next/link'
 import UploadReportModal from './UploadReportModal'
 
-export default async function ReportsPage() {
+export default async function ReportsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ patient?: string }>
+}) {
+  const { patient: defaultPatientId } = await searchParams
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -33,7 +38,7 @@ export default async function ReportsPage() {
       <main className="p-6 space-y-6">
         <div className="flex items-center justify-between">
           <p className="text-sm text-slate-500">{reports?.length ?? 0} reports</p>
-          <UploadReportModal patients={patients ?? []} />
+          <UploadReportModal patients={patients ?? []} defaultPatientId={defaultPatientId} />
         </div>
 
         {(!reports || reports.length === 0) ? (

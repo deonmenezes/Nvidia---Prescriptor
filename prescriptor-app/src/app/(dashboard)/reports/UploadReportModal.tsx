@@ -6,14 +6,14 @@ import { Upload, X, Loader2, FileText } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
 interface Patient { id: string; full_name: string }
-interface Props { patients: Patient[] }
+interface Props { patients: Patient[]; defaultPatientId?: string }
 
-export default function UploadReportModal({ patients }: Props) {
-  const [open, setOpen] = useState(false)
+export default function UploadReportModal({ patients, defaultPatientId }: Props) {
+  const [open, setOpen] = useState(!!defaultPatientId)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
-    patient_id: '', title: '', description: '',
+    patient_id: defaultPatientId ?? '', title: '', description: '',
     report_type: 'general', analysis: '', file_url: '',
   })
   const router = useRouter()

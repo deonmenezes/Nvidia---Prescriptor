@@ -14,7 +14,7 @@ import type { Doctor } from '@/types'
 const nav = [
   { label: 'Dashboard',    href: '/dashboard',    icon: LayoutDashboard },
   { label: 'Patients',     href: '/patients',     icon: Users },
-  { label: 'Reminders',    href: '/reminders',    icon: Bell,           badge: 3 },
+  { label: 'Reminders',    href: '/reminders',    icon: Bell },
   { label: 'Messages',     href: '/messages',     icon: MessageSquare },
   { label: 'Reports',      href: '/reports',      icon: FileText },
   { label: 'Appointments', href: '/appointments', icon: Calendar },
@@ -34,7 +34,7 @@ export default function Sidebar() {
       setDoctor(data)
     }
     load()
-  }, [supabase])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleSignOut() {
     await supabase.auth.signOut()
@@ -69,7 +69,7 @@ export default function Sidebar() {
           Navigation
         </p>
 
-        {nav.map(({ label, href, icon: Icon, badge }) => {
+        {nav.map(({ label, href, icon: Icon }) => {
           const active = pathname === href || (href !== '/dashboard' && pathname.startsWith(href))
           return (
             <Link
@@ -85,14 +85,6 @@ export default function Sidebar() {
                 className={`shrink-0 ${active ? '' : 'text-slate-500 group-hover:text-slate-300'}`}
               />
               <span className="flex-1">{label}</span>
-              {badge && (
-                <span
-                  className="flex h-5 min-w-5 items-center justify-center rounded-full px-1.5 text-[10px] font-bold text-white leading-none"
-                  style={{ background: '#f59e0b' }}
-                >
-                  {badge}
-                </span>
-              )}
             </Link>
           )
         })}

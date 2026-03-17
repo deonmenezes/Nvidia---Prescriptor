@@ -5,7 +5,12 @@ import { formatDate, formatDateTime, getStatusColor, getInitials } from '@/lib/u
 import { Calendar } from 'lucide-react'
 import NewAppointmentModal from './NewAppointmentModal'
 
-export default async function AppointmentsPage() {
+export default async function AppointmentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ patient?: string }>
+}) {
+  const { patient: defaultPatientId } = await searchParams
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -35,7 +40,7 @@ export default async function AppointmentsPage() {
             <span className="font-semibold text-slate-900">{upcoming.length} upcoming</span>
             <span className="text-slate-400">{past.length} past</span>
           </div>
-          <NewAppointmentModal patients={patients ?? []} />
+          <NewAppointmentModal patients={patients ?? []} defaultPatientId={defaultPatientId} />
         </div>
 
         {/* Upcoming */}

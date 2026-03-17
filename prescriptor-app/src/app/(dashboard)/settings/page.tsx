@@ -24,7 +24,7 @@ export default function SettingsPage() {
       }
     }
     load()
-  }, [supabase])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault()
